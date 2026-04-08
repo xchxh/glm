@@ -1,0 +1,16 @@
+services:
+  zai-openai:
+    image: python:3.11-slim
+    container_name: zai-openai
+    working_dir: /app
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=DEBUG
+      - HTTP_DEBUG=0
+    volumes:
+      - ./:/app
+    command: >
+      sh -c "pip install --no-cache-dir fastapi uvicorn httpx &&
+             python openai.py"
+    ports:
+      - "30016:30016"
