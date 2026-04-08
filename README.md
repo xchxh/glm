@@ -47,6 +47,27 @@ docker-compose logs -f zai-openai
 docker-compose down
 ```
 
+## Render 部署步骤
+
+您可以轻松地将本项目部署到 [Render](https://render.com/) 平台。
+
+### 1. 使用 Blueprint 一键部署
+
+1. 将本项目 Fork 到您的 GitHub 账号。
+2. 登录 Render 控制台，点击 **"New"** -> **"Blueprint"**。
+3. 连接您的仓库，Render 会自动识别 `render.yaml` 文件。
+4. 点击 **"Apply"** 即可开始部署。
+
+### 2. 手动创建 Web Service
+
+1. 点击 **"New"** -> **"Web Service"**。
+2. 选择您的仓库。
+3. Runtime 选择 **"Docker"**。
+4. 在 **"Environment"** 中，可以根据需要设置 `LOG_LEVEL` (默认 `INFO`)。
+5. Render 会自动识别并暴露端口。
+
+部署完成后，您将获得一个类似 `https://zai-openai-proxy.onrender.com` 的 URL。
+
 ## API 调用说明
 
 服务启动后，默认暴漏于宿主机的 **30016** 端口。

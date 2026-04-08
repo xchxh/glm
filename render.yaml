@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: zai-openai-proxy
+    runtime: docker
+    plan: free
+    region: singapore # 建议选择距离 API 服务器较近的区域
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: LOG_LEVEL
+        value: INFO
+      - key: HTTP_DEBUG
+        value: "0"
+      - key: PORT
+        value: "30016"
+    healthCheckPath: /v1/models
